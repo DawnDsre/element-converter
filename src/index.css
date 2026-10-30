@@ -1,0 +1,215 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== DARK THEME (Default) ===== */
+:root {
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-card: #1e293b;
+  --bg-card-hover: #334155;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --accent: #38bdf8;
+  --accent-hover: #7dd3fc;
+  --border: #334155;
+  --input-bg: #0f172a;
+  --success: #4ade80;
+  --warning: #fb923c;
+  --error: #f87171;
+  --header-gradient: linear-gradient(135deg,#0c2d48 0%,#1a3a5c 100%);
+}
+
+/* ===== LIGHT THEME ===== */
+.theme-light {
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-hover: #e2e8f0;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+  --accent: #2563eb;
+  --accent-hover: #3b82f6;
+  --border: #e2e8f0;
+  --input-bg: #f1f5f9;
+  --success: #16a34a;
+  --warning: #ea580c;
+  --error: #dc2626;
+  --header-gradient: linear-gradient(135deg,#2563eb 0%,#1d4ed8 100%);
+}
+
+/* ===== OCEAN THEME ===== */
+.theme-ocean {
+  --bg-primary: #0c1929;
+  --bg-secondary: #132f4c;
+  --bg-card: #132f4c;
+  --bg-card-hover: #1e4976;
+  --text-primary: #e0f2fe;
+  --text-secondary: #7dd3fc;
+  --text-muted: #38bdf8;
+  --accent: #06b6d4;
+  --accent-hover: #22d3ee;
+  --border: #1e4976;
+  --input-bg: #0c1929;
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --header-gradient: linear-gradient(135deg,#083344 0%,#0e7490 100%);
+}
+
+/* ===== FOREST THEME ===== */
+.theme-forest {
+  --bg-primary: #0f1f0f;
+  --bg-secondary: #1a2e1a;
+  --bg-card: #1a2e1a;
+  --bg-card-hover: #2d4a2d;
+  --text-primary: #dcfce7;
+  --text-secondary: #86efac;
+  --text-muted: #4ade80;
+  --accent: #22c55e;
+  --accent-hover: #4ade80;
+  --border: #2d4a2d;
+  --input-bg: #0f1f0f;
+  --success: #4ade80;
+  --warning: #fbbf24;
+  --error: #f87171;
+  --header-gradient: linear-gradient(135deg,#14532d 0%,#166534 100%);
+}
+
+/* ===== SUNSET THEME ===== */
+.theme-sunset {
+  --bg-primary: #1c1917;
+  --bg-secondary: #292524;
+  --bg-card: #292524;
+  --bg-card-hover: #44403c;
+  --text-primary: #fef3c7;
+  --text-secondary: #fcd34d;
+  --text-muted: #fbbf24;
+  --accent: #f97316;
+  --accent-hover: #fb923c;
+  --border: #44403c;
+  --input-bg: #1c1917;
+  --success: #4ade80;
+  --warning: #fbbf24;
+  --error: #f87171;
+  --header-gradient: linear-gradient(135deg,#7c2d12 0%,#c2410c 100%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  min-height: 100vh;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Number input spinner removal */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Element cell animations */
+.element-cell {
+  transition: all 0.15s ease;
+}
+.element-cell:hover {
+  transform: scale(1.18);
+  z-index: 10;
+}
+.element-cell.selected {
+  box-shadow: 0 0 0 2.5px var(--accent), 0 0 16px rgba(0,0,0,0.3);
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-in {
+  animation: fadeIn 0.25s ease-out;
+}
+
+/* Pulse glow for selected elements */
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 2.5px var(--accent), 0 0 10px rgba(0,0,0,0.2); }
+  50% { box-shadow: 0 0 0 2.5px var(--accent), 0 0 20px rgba(0,0,0,0.4); }
+}
+.element-cell.selected {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+/* Main grid layout - responsive */
+.main-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 16px;
+}
+
+@media (max-width: 1100px) {
+  .main-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Hover effects for remove button */
+.remove-btn:hover {
+  background: #7f1d1d !important;
+  color: #fca5a5 !important;
+}
+
+/* Export button hover */
+.export-btn:hover {
+  background: var(--accent) !important;
+  color: #0f172a !important;
+}
+
+/* Convert button active effect */
+.convert-btn:active:not(:disabled) {
+  transform: translateY(0px) !important;
+}
+
+/* Mode button hover */
+.mode-btn:not(.active):hover {
+  background: var(--bg-card-hover) !important;
+  color: var(--text-secondary) !important;
+}
+
+/* Theme buttons */
+.theme-btn {
+  transition: all 0.2s ease;
+}
+.theme-btn:hover {
+  transform: scale(1.05);
+}
+.theme-btn.active {
+  box-shadow: 0 0 0 2.5px var(--accent);
+}
